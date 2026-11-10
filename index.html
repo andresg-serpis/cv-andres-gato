@@ -504,45 +504,7 @@
         </main>
     </div>
 
-    <script>
-        const mobileToggle = document.getElementById('mobile-toggle');
-        const sidebar = document.getElementById('sidebar');
-
-        mobileToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('hidden');
-        });
-
-        function pingService(serviceName, elementId) {
-            const el = document.getElementById(elementId);
-            const ms = Math.floor(Math.random() * 8) + 1;
-            el.innerText = `Pinging ${serviceName}...`;
-            setTimeout(() => {
-                el.innerText = `Ping OK: ${ms}ms latency`;
-                el.className = "text-emeraldNeon font-bold";
-            }, 700);
-        }
-
-        function runScriptTest() {
-            const el = document.getElementById('script-status');
-            el.innerText = "Ejecutando ./net-config.ps1...";
-            setTimeout(() => {
-                el.innerText = "Execution Success: 0 errors";
-                el.className = "text-emeraldNeon font-bold";
-            }, 1000);
-        }
-
-        function runNetworkDiagnostics() {
-            const spinner = document.getElementById('diag-spinner');
-            spinner.classList.add('animate-spin');
-            setTimeout(() => {
-                spinner.classList.remove('animate-spin');
-            }, 1800);
-        }
-
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text);
-            alert('Dirección de correo copiada al portapapeles');
-        }
-    </script>
+<!-- Enlace a tu archivo JS externo -->
+    <script src="main.js"></script>
 </body>
 </html>
