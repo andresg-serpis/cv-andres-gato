@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrés Gato Gassent | SysAdmin & Technical Portfolio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#0b0f19',
+                        panel: '#131b2e',
+                        panelLight: '#1b2742',
+                        emeraldNeon: '#10b981',
+                        amberGold: '#f59e0b',
+                        cyberCyan: '#06b6d4'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fuentes e Iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tu hoja de estilo CSS externa -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-obsidian text-slate-200 min-h-screen selection:bg-emerald-500 selection:text-slate-950 bg-grid-pattern">
+
+    <!-- Encabezado Móvil -->
+    <div class="lg:hidden sticky top-0 z-50 bg-panel/95 backdrop-blur-md border-b border-slate-800 p-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full border border-emerald-500/50 p-0.5 overflow-hidden">
+                <img src="foto.png" alt="Andrés Gato" class="w-full h-full object-cover rounded-full" onerror="this.src='https://ui-avatars.com/api/?name=Andres+Gato&background=10b981&color=fff'">
+            </div>
+            <div>
+                <h1 class="font-bold text-sm text-white">Andrés Gato Gassent</h1>
+                <p class="text-[11px] font-mono text-emeraldNeon">Técnico SMR • IES Serpis</p>
+            </div>
+        </div>
+        <button id="mobile-toggle" class="p-2 text-slate-300 hover:text-emeraldNeon focus:outline-none" aria-label="Abrir Menú">
+            <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+    </div>
+
+    <!-- Layout Principal -->
+    <div class="flex flex-col lg:flex-row min-h-screen">
+
+        <!-- Barra Lateral Izquierda (Sidebar) -->
+        <aside id="sidebar" class="hidden lg:flex flex-col w-full lg:w-80 bg-panel border-r border-slate-800/80 sticky top-0 h-screen z-40 shrink-0 custom-scrollbar overflow-y-auto">
+            
+            <div class="p-6 border-b border-slate-800/80 text-center relative">
+                <!-- Estado -->
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emeraldNeon/10 border border-emeraldNeon/30 text-[11px] font-mono text-emeraldNeon mb-4">
+                    <span class="w-2 h-2 rounded-full bg-emeraldNeon animate-pulse"></span>
+                    SMR - 2.º Curso | IES Serpis
+                </div>
+
+                <!-- Foto de Perfil -->
+                <div class="relative w-32 h-32 mx-auto mb-4 group">
+                    <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-emeraldNeon via-cyberCyan to-amberGold opacity-80 blur group-hover:opacity-100 transition duration-300"></div>
+                    <div class="relative w-full h-full rounded-full border-2 border-slate-900 overflow-hidden bg-panel">
+                        <img src="foto.png" alt="Andrés Gato Gassent" class="w-full h-full object-cover object-center" onerror="this.src='https://ui-avatars.com/api/?name=Andres+Gato&background=10b981&color=fff&size=300'">
+                    </div>
+                </div>
+
+                <h2 class="text-xl font-extrabold text-white tracking-tight">Andrés Gato Gassent</h2>
+                <p class="text-xs font-mono text-amberGold mt-1">Sistemas Microinformáticos & Redes</p>
+                <p class="text-xs text-slate-400 mt-2 flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-location-dot text-emeraldNeon"></i> Valencia (46022), España
+                </p>
+
+                <!-- Botones de Contacto -->
+                <div class="grid grid-cols-2 gap-2 mt-5 font-mono text-xs">
+                    <button onclick="copyToClipboard('andres.gatgas@gmail.com')" class="p-2.5 rounded-lg bg-panelLight border border-slate-700/60 hover:border-emeraldNeon hover:text-emeraldNeon transition-all flex items-center justify-center gap-1.5 text-slate-300">
+                        <i class="fa-solid fa-envelope text-emeraldNeon"></i> Email
+                    </button>
+                    <a href="tel:+34672403429" class="p-2.5 rounded-lg bg-panelLight border border-slate-700/60 hover:border-amberGold hover:text-amberGold transition-all flex items-center justify-center gap-1.5 text-slate-300">
+                        <i class="fa-solid fa-phone text-amberGold"></i> Llamar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Menú de Navegación -->
+            <nav class="p-4 space-y-1 text-sm font-mono flex-grow">
+                <a href="#sysmon" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-panelLight hover:text-emeraldNeon transition-all active">
+                    <i class="fa-solid fa-chart-line text-emeraldNeon"></i>
+                    <span>System Monitor</span>
+                </a>
+                <a href="#infra-monitor" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-panelLight hover:text-emeraldNeon transition-all">
+                    <i class="fa-solid fa-network-wired text-amberGold"></i>
+                    <span>Monitor de Redes</span>
+                </a>
+                <a href="#servicios" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-panelLight hover:text-emeraldNeon transition-all">
+                    <i class="fa-solid fa-server text-emeraldNeon"></i>
+                    <span>Competencias & Redes</span>
+                </a>
+                <a href="#experiencia" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-panelLight hover:text-emeraldNeon transition-all">
+                    <i class="fa-solid fa-briefcase text-amberGold"></i>
+                    <span>Experiencia & Prácticas</span>
+                </a>
+                <a href="#formacion" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-panelLight hover:text-emeraldNeon transition-all">
+                    <i class="fa-solid fa-user-graduate text-emeraldNeon"></i>
+                    <span>Estudios SMR</span>
+                </a>
+                <a href="#contacto" class="nav-item flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-panelLight hover:text-emeraldNeon transition-all">
+                    <i class="fa-solid fa-paper-plane text-amberGold"></i>
+                    <span>Hub de Contacto</span>
+                </a>
+            </nav>
+
+            <div class="p-4 border-t border-slate-800/80 text-[11px] font-mono text-slate-400 bg-obsidian/40">
+                <div class="flex items-center justify-between">
+                    <span>HOST: agato-pc</span>
+                    <span class="text-emeraldNeon">ONLINE</span>
+                </div>
+                <div class="mt-1 text-[10px] text-slate-500">IP: 192.168.1.104/24</div>
+            </div>
+        </aside>
+
+        <!-- Área de Contenido Principal -->
+        <main class="flex-grow min-w-0 p-4 sm:p-6 lg:p-10 space-y-12">
+
+            <!-- SECCIÓN 1: MONITOR DE SISTEMA -->
+            <section id="sysmon" class="space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-panel border border-slate-800 p-6 rounded-2xl glow-emerald">
+                    <div>
+                        <div class="flex items-center gap-2 text-xs font-mono text-emeraldNeon uppercase tracking-widest font-semibold mb-1">
+                            <i class="fa-solid fa-shield-halved"></i> Dashboard del Administrador de Sistemas
+                        </div>
+                        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+                            Andrés Gato Gassent
+                        </h1>
+                        <p class="text-slate-400 text-sm mt-1">
+                            Técnico SMR • Administración de Servidores DNS/DHCP, Configuración de Redes, Virtualización y Mantenimiento Hardware.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3">
+                        <button onclick="copyToClipboard('andres.gatgas@gmail.com')" class="px-4 py-2.5 rounded-xl font-mono text-xs font-semibold text-obsidian bg-emeraldNeon hover:bg-emerald-400 transition-all shadow-lg shadow-emeraldNeon/20 flex items-center gap-2">
+                            <i class="fa-solid fa-copy"></i> Copiar Email
+                        </button>
+                        <a href="tel:+34672403429" class="px-4 py-2.5 rounded-xl font-mono text-xs font-semibold text-amberGold bg-amberGold/10 border border-amberGold/30 hover:bg-amberGold/20 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-phone"></i> 672 40 34 29
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-panel p-4 rounded-xl border border-slate-800 flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-lg bg-emeraldNeon/10 text-emeraldNeon flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-dns"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-mono text-slate-400 block uppercase">Servicio DNS</span>
+                            <span class="text-sm font-bold text-emeraldNeon font-mono">BIND9 / WinServer</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-panel p-4 rounded-xl border border-slate-800 flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-lg bg-amberGold/10 text-amberGold flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-mono text-slate-400 block uppercase">Protocolo Red</span>
+                            <span class="text-sm font-bold text-amberGold font-mono">DHCP & LAN</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-panel p-4 rounded-xl border border-slate-800 flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-lg bg-cyberCyan/10 text-cyberCyan flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-box-open"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-mono text-slate-400 block uppercase">Contenedores</span>
+                            <span class="text-sm font-bold text-cyberCyan font-mono">Incus / Docker</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-panel p-4 rounded-xl border border-slate-800 flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-lg bg-fuchsia-500/10 text-fuchsia-400 flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-mono text-slate-400 block uppercase">Scripting</span>
+                            <span class="text-sm font-bold text-fuchsia-400 font-mono">PowerShell / Bash</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: INFRAESTRUCTURA Y REDES -->
+            <section id="infra-monitor" class="space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                        <span class="text-xs font-mono text-emeraldNeon uppercase tracking-wider font-semibold">// MONITOR DE SERVICIOS EN TIEMPO REAL</span>
+                        <h2 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2 mt-1">
+                            <i class="fa-solid fa-microchip text-emeraldNeon"></i> Estado de Infraestructura & Diagnostic Tools
+                        </h2>
+                    </div>
+                    <button onclick="runNetworkDiagnostics()" class="px-4 py-2 rounded-xl bg-emeraldNeon/10 border border-emeraldNeon/30 text-emeraldNeon font-mono text-xs font-semibold hover:bg-emeraldNeon/20 transition-all flex items-center gap-2 self-start sm:self-auto">
+                        <i class="fa-solid fa-arrows-rotate text-[10px]" id="diag-spinner"></i> Ejecutar Diagnostic Scan
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
+                    <div class="bg-panel border border-slate-800 p-4 rounded-xl space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emeraldNeon animate-ping"></span>
+                                <strong class="text-white">BIND9 DNS Resolver</strong>
+                            </div>
+                            <span class="px-2 py-0.5 rounded bg-emeraldNeon/10 border border-emeraldNeon/30 text-emeraldNeon text-[10px]">ACTIVE</span>
+                        </div>
+                        <div class="text-slate-400 text-[11px] space-y-1">
+                            <div>Port: 53 UDP/TCP</div>
+                            <div>Zone: <span class="text-slate-200">serpis.local</span></div>
+                            <div id="dns-latency">Latency: 2ms (Internal)</div>
+                        </div>
+                        <button onclick="pingService('DNS BIND9', 'dns-latency')" class="w-full py-1.5 rounded bg-obsidian border border-slate-700 hover:border-emeraldNeon hover:text-emeraldNeon text-slate-300 text-[11px] transition-all flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-bolt text-amberGold"></i> Simular Ping DNS
+                        </button>
+                    </div>
+
+                    <div class="bg-panel border border-slate-800 p-4 rounded-xl space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-cyberCyan"></span>
+                                <strong class="text-white">Incus / Docker Stack</strong>
+                            </div>
+                            <span class="px-2 py-0.5 rounded bg-cyberCyan/10 border border-cyberCyan/30 text-cyberCyan text-[10px]">RUNNING</span>
+                        </div>
+                        <div class="text-slate-400 text-[11px] space-y-1">
+                            <div>Engine: Linux Containers</div>
+                            <div>Status: <span class="text-slate-200">3 Nodes Up</span></div>
+                            <div id="incus-status">Mem Usage: 1.4 GB / 8 GB</div>
+                        </div>
+                        <button onclick="pingService('Incus Engine', 'incus-status')" class="w-full py-1.5 rounded bg-obsidian border border-slate-700 hover:border-cyberCyan hover:text-cyberCyan text-slate-300 text-[11px] transition-all flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-terminal text-cyberCyan"></i> Test de Carga
+                        </button>
+                    </div>
+
+                    <div class="bg-panel border border-slate-800 p-4 rounded-xl space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-amberGold"></span>
+                                <strong class="text-white">Scripts & Automation</strong>
+                            </div>
+                            <span class="px-2 py-0.5 rounded bg-amberGold/10 border border-amberGold/30 text-amberGold text-[10px]">READY</span>
+                        </div>
+                        <div class="text-slate-400 text-[11px] space-y-1">
+                            <div>Environment: PS7 / Bash</div>
+                            <div>Task: Backup & Net Config</div>
+                            <div id="script-status">Last Execution: OK (0 errors)</div>
+                        </div>
+                        <button onclick="runScriptTest()" class="w-full py-1.5 rounded bg-obsidian border border-slate-700 hover:border-amberGold hover:text-amberGold text-slate-300 text-[11px] transition-all flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-play text-emeraldNeon"></i> Ejecutar Script PS
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-panel border border-slate-800 rounded-2xl p-5 font-mono text-xs space-y-3">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <span class="text-slate-300 flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-emeraldNeon"></i> Registro Log de Pruebas de Red & Hardware
+                        </span>
+                        <span class="text-[10px] text-slate-500" id="log-timestamp">2026-11-10 14:15:00</span>
+                    </div>
+                    <div id="diag-log-container" class="space-y-1.5 text-slate-400 max-h-32 overflow-y-auto custom-scrollbar">
+                        <div class="text-emeraldNeon">[OK] Interfaz LAN (eth0): Enlace activo a 1000 Mbps Full-Duplex.</div>
+                        <div class="text-slate-300">[INFO] Comprobación de hardware en puerto de alimentación de portátil: Voltaje nominal OK.</div>
+                        <div class="text-amberGold">[STATUS] Servidor DHCP local asignando direcciones en segmento 192.168.1.0/24.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3: COMPETENCIAS -->
+            <section id="servicios" class="space-y-6">
+                <div>
+                    <span class="text-xs font-mono text-emeraldNeon uppercase tracking-wider font-semibold">// MATRIZ TÉCNICA</span>
+                    <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Servicios & Competencias Microinformáticas</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-panel border border-slate-800 p-6 rounded-2xl hover:border-emeraldNeon/50 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-emeraldNeon/10 border border-emeraldNeon/30 flex items-center justify-center text-emeraldNeon mb-4">
+                            <i class="fa-solid fa-network-wired text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Servicios de Red & DNS</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                            Despliegue y administración de resolver DNS locales (BIND9 y Windows Server) junto con direccionamiento dinámico DHCP.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                            <span class="px-2 py-0.5 rounded bg-obsidian border border-slate-800 text-emeraldNeon">BIND9 DNS</span>
+                            <span class="px-2 py-0.5 rounded bg-obsidian border border-slate-800 text-emeraldNeon">DHCP Server</span>
+                            <span class="px-2 py-0.5 rounded bg-obsidian border border-slate-800 text-slate-300">Windows Server</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-panel border border-slate-800 p-6 rounded-2xl hover:border-amberGold/50 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-amberGold/10 border border-amberGold/30 flex items-center justify-center text-amberGold mb-4">
+                            <i class="fa-solid fa-wrench text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Hardware & Diagnóstico</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                            Sustitución de componentes, diagnóstico de placas de carga/alimentación en portátiles y optimización de rendimiento físico.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                            <span class="px-2 py-0.5 rounded bg-obsidian border border-slate-800 text-amberGold">Montaje PC</span>
+                            <span class="px-2 py-0.5 rounded bg-obsidian border border-slate-800 text-amberGold">Reparación Portátiles</span>
+                            <span class="px-2 py-0.5 rounded bg-obsidian border border-slate-800 text-slate-300">Fuente Alimentación</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-panel border border-slate-800 p-6 rounded-2xl hover:border-cyberCyan/50 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-cyberCyan/10 border border-cyberCyan/30 flex items-center justify-center text-cyberCyan mb-4">
+                            <i class="fa-brands fa-linux text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Sistemas Operativos & Virtualización</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                            Instalación limpia, configuración de particiones y virtualización ligera mediante Docker e Incus en entornos Linux y Windows.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                            <span class="px-2 py-0.5 rounded bg-obsidian border border-slate-800 text-cyberCyan">Ubuntu Linux</span>
+                            <span class="px-2 py-0.5 rounded bg-obsidian border border-slate-800 text-cyberCyan">Windows 11</span>
+                            <span class="px-2 py-0.5 rounded bg-obsidian border border-slate-800 text-slate-300">Docker / Incus</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 4: EXPERIENCIA -->
+            <section id="experiencia" class="space-y-6">
+                <div>
+                    <span class="text-xs font-mono text-amberGold uppercase tracking-wider font-semibold">// EXPERIENCIA REAL</span>
+                    <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Línea de Tiempo Operativa</h2>
+                </div>
+
+                <div class="relative border-l-2 border-slate-800 ml-4 pl-6 space-y-8">
+                    <div class="relative group">
+                        <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-emeraldNeon border-4 border-obsidian"></div>
+
+                        <div class="bg-panel border border-slate-800 p-6 rounded-2xl space-y-4">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <div>
+                                    <span class="px-3 py-1 text-[11px] font-mono font-semibold text-emeraldNeon bg-emeraldNeon/10 border border-emeraldNeon/30 rounded-md">
+                                        Prácticas Formativas FP (104 Horas)
+                                    </span>
+                                    <h3 class="text-xl font-bold text-white mt-2">CEIP Eliseo Vidal</h3>
+                                    <p class="text-xs font-mono text-slate-400">Técnico de Soporte e Infraestructura • Mayo 2026</p>
+                                </div>
+                                <div class="font-mono text-xs text-emeraldNeon">
+                                    <i class="fa-solid fa-circle-check"></i> Prácticas Completadas
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-300 pt-2">
+                                <div class="bg-obsidian/60 p-3.5 rounded-xl border border-slate-800">
+                                    <strong class="text-white block font-mono mb-1 text-emeraldNeon"><i class="fa-solid fa-screwdriver-wrench"></i> Hardware & Portátiles</strong>
+                                    Diagnóstico directo de averías físicas y resolución de problemas de carga/alimentación en portátiles del colegio.
+                                </div>
+                                <div class="bg-obsidian/60 p-3.5 rounded-xl border border-slate-800">
+                                    <strong class="text-white block font-mono mb-1 text-amberGold"><i class="fa-solid fa-wifi"></i> Redes & Wi-Fi</strong>
+                                    Integración de puestos informáticos en la red Wi-Fi/LAN del centro y resolución de incidencias.
+                                </div>
+                                <div class="bg-obsidian/60 p-3.5 rounded-xl border border-slate-800">
+                                    <strong class="text-white block font-mono mb-1 text-cyberCyan"><i class="fa-solid fa-database"></i> Software & BBDD</strong>
+                                    Asistencia técnica directa al profesorado y mantenimiento general de bases de datos.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 5: ESTUDIOS -->
+            <section id="formacion" class="space-y-6">
+                <div>
+                    <span class="text-xs font-mono text-emeraldNeon uppercase tracking-wider font-semibold">// EDUCACIÓN OFICIAL</span>
+                    <h2 class="text-2xl font-bold text-white tracking-tight mt-1">Estudios SMR & Certificados</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-panel border border-slate-800 p-6 rounded-2xl space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-xl bg-emeraldNeon/10 border border-emeraldNeon/30 flex items-center justify-center text-emeraldNeon text-xl">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <span class="text-xs font-mono text-emeraldNeon bg-emeraldNeon/10 px-3 py-1 rounded-full border border-emeraldNeon/30">
+                                2.º Curso • En Curso
+                            </span>
+                        </div>
+
+                        <div>
+                            <span class="text-xs font-mono text-slate-400">2025 - Actualidad</span>
+                            <h3 class="text-xl font-bold text-white mt-1">Grado Medio en Sistemas Microinformáticos y Redes (SMR)</h3>
+                            <p class="text-emeraldNeon font-mono text-xs mt-0.5">IES Serpis (Valencia)</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-panel border border-slate-800 p-6 rounded-2xl space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-xl bg-amberGold/10 border border-amberGold/30 flex items-center justify-center text-amberGold text-xl">
+                                <i class="fa-solid fa-certificate"></i>
+                            </div>
+                            <span class="text-xs font-mono text-amberGold bg-amberGold/10 px-3 py-1 rounded-full border border-amberGold/30">
+                                Certificado Oficial
+                            </span>
+                        </div>
+
+                        <div>
+                            <span class="text-xs font-mono text-slate-400">Cisco Networking Academy</span>
+                            <h3 class="text-xl font-bold text-white mt-1">Introducción a Packet Tracer</h3>
+                            <p class="text-amberGold font-mono text-xs mt-0.5">Simulación y Configuración de Redes</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 6: CONTACTO -->
+            <section id="contacto" class="space-y-6 pt-4">
+                <div class="bg-gradient-to-r from-panel via-panelLight to-panel border border-slate-800 p-8 rounded-3xl text-center space-y-6">
+                    <div class="max-w-xl mx-auto space-y-3">
+                        <span class="text-xs font-mono text-emeraldNeon uppercase tracking-widest font-semibold">// CONTACTO DIRECTO</span>
+                        <h2 class="text-3xl font-extrabold text-white">¿Hablamos para una oportunidad técnica?</h2>
+                    </div>
+
+                    <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
+                        <a href="mailto:andres.gatgas@gmail.com" class="px-5 py-3 rounded-xl bg-obsidian border border-slate-700 text-white hover:border-emeraldNeon hover:text-emeraldNeon transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-emeraldNeon"></i> andres.gatgas@gmail.com
+                        </a>
+                        <a href="tel:+34672403429" class="px-5 py-3 rounded-xl bg-obsidian border border-slate-700 text-white hover:border-amberGold hover:text-amberGold transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-amberGold"></i> 672 40 34 29
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="border-t border-slate-800/80 pt-6 pb-12 text-center text-xs font-mono text-slate-500">
+                <p>© 2026 Andrés Gato Gassent • Técnico SMR (IES Serpis)</p>
+            </footer>
+
+        </main>
+    </div>
+
+    <script>
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const sidebar = document.getElementById('sidebar');
+
+        mobileToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('hidden');
+        });
+
+        function pingService(serviceName, elementId) {
+            const el = document.getElementById(elementId);
+            const ms = Math.floor(Math.random() * 8) + 1;
+            el.innerText = `Pinging ${serviceName}...`;
+            setTimeout(() => {
+                el.innerText = `Ping OK: ${ms}ms latency`;
+                el.className = "text-emeraldNeon font-bold";
+            }, 700);
+        }
+
+        function runScriptTest() {
+            const el = document.getElementById('script-status');
+            el.innerText = "Ejecutando ./net-config.ps1...";
+            setTimeout(() => {
+                el.innerText = "Execution Success: 0 errors";
+                el.className = "text-emeraldNeon font-bold";
+            }, 1000);
+        }
+
+        function runNetworkDiagnostics() {
+            const spinner = document.getElementById('diag-spinner');
+            spinner.classList.add('animate-spin');
+            setTimeout(() => {
+                spinner.classList.remove('animate-spin');
+            }, 1800);
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text);
+            alert('Dirección de correo copiada al portapapeles');
+        }
+    </script>
+</body>
+</html>
